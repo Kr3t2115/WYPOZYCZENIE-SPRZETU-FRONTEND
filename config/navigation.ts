@@ -12,6 +12,8 @@ import {
     Tag,
     SlidersHorizontal,
     CalendarIcon,
+    ClipboardCheck,
+    PackagePlus,
     LucideIcon
 } from "lucide-react";
 import { ROLE_TYPE } from "@/store/auth-store";
@@ -32,7 +34,7 @@ const STUDENT_MENU: MenuGroup[] = [
         items: [
             { title: 'Pulpit', href: '/dashboard', icon: LayoutDashboard },
             { title: 'Lista sprzętów', href: '/equipment', icon: PackageSearch },
-            { title: 'Rezerwacje', href: '/my-reservation', icon: Clock },
+            { title: 'Rezerwacje', href: '/my-reservations', icon: Clock },
             { title: 'Wypożyczenia', href: '/my-rentals', icon: CalendarIcon,},
             { title: 'Przedłużenia', href: '/my-rentals/extensions', icon: CalendarIcon,},
             { title: 'Uszkodzenia', href: '/my-rentals/faults', icon: CalendarIcon,},
@@ -48,6 +50,9 @@ const SECRETARIAT_MENU: MenuGroup[] = [
             { title: 'Wnioski i Rezerwacje', href: '/desk/requests', icon: FileCheck },
             { title: 'Inwentarz i Sprzęt', href: '/desk/inventory', icon: FolderPlus },
             { title: 'Historia Wypożyczeń', href: '/desk/history', icon: History },
+            { title: 'Przedłużenia', href: '/desk/extensions', icon: CalendarIcon },
+            { title: 'Usterki', href: '/desk/faults', icon: Wrench },
+            { title: 'Inspekcje', href: '/desk/inspections', icon: ClipboardCheck },
         ],
     },
     {
@@ -55,6 +60,7 @@ const SECRETARIAT_MENU: MenuGroup[] = [
         items: [
             { title: 'Kategorie', href: '/admin/categories', icon: Tag },
             { title: 'Atrybuty', href: '/admin/attributes', icon: SlidersHorizontal },
+            { title: 'Dodaj sprzęt', href: '/admin/equipment/new', icon: PackagePlus },
             { title: 'Użytkownicy', href: '/admin/users', icon: Users },
 
         ],
@@ -67,7 +73,6 @@ const IT_MENU: MenuGroup[] = [
         title: 'Administracja',
         items: [
             { title: 'Serwis i Awaria', href: '/admin/maintenance', icon: Wrench },
-            { title: 'Zarządzanie Sprzętem IT', href: '/admin/inventory-all', icon: FolderPlus },
             { title: 'Uprawnienia i Logi', href: '/admin/system', icon: ShieldAlert },
         ],
     },

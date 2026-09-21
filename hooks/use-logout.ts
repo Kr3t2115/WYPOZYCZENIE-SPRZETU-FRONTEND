@@ -15,13 +15,11 @@ export function useLogout() {
         setIsLoggingOut(true);
 
         try {
-            // backend czyści ciasteczka access_token / refresh_token (są httpOnly, front ich nie ruszy)
             await logout();
         } catch {
-            // np. sesja już wygasła (401) albo brak sieci - lokalnie i tak kończymy sesję
         } finally {
             setUser(null);
-            router.replace("/login");
+            router.push("/login");
             setIsLoggingOut(false);
         }
     }

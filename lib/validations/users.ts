@@ -4,7 +4,9 @@ import {ROLE_TYPE, ROLES} from "@/store/auth-store";
 
 const firstNameField = z.string().min(1).max(100)
 const lastNameField = z.string().min(1).max(100)
-const isActiveField = queryBoolean
+// w body (PATCH) backend oczekuje zwykłego booleana, a w query string (GET) stringów "true"/"false"
+const isActiveField = z.boolean()
+const isActiveQueryField = queryBoolean
 const roleField = z.enum(ROLES)
 
 const updateSchema = z.object({
@@ -16,7 +18,7 @@ const updateSchema = z.object({
 
 const getSchema = z.object({
     ...paginationFields.shape,
-    isActive: isActiveField.optional(),
+    isActive: isActiveQueryField.optional(),
     role: roleField.optional(),
     firstName: firstNameField.optional(),
     lastName: lastNameField.optional(),

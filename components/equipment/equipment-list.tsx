@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link";
+import { Plus } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button, buttonVariants } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -34,11 +35,19 @@ export function EquipmentList({ mode }: { mode: "user" | "desk" }) {
 
     return (
         <div className="flex flex-col gap-6 p-6">
-            <div className="flex flex-col gap-1">
-                <h1 className="text-2xl font-bold">{desk ? "Inwentarz i sprzęt" : "Lista sprzętów"}</h1>
-                <p className="text-sm text-muted-foreground">
-                    {desk ? "Zarządzaj sprzętem dostępnym w magazynie." : "Przeglądaj dostępny sprzęt do wypożyczenia."}
-                </p>
+            <div className="flex flex-wrap items-start justify-between gap-4">
+                <div className="flex flex-col gap-1">
+                    <h1 className="text-2xl font-bold">{desk ? "Inwentarz i sprzęt" : "Lista sprzętów"}</h1>
+                    <p className="text-sm text-muted-foreground">
+                        {desk ? "Zarządzaj sprzętem dostępnym w magazynie." : "Przeglądaj dostępny sprzęt do wypożyczenia."}
+                    </p>
+                </div>
+                {desk && (
+                    <Link href="/admin/equipment/new" className={buttonVariants() + " gap-1"}>
+                        <Plus className="h-4 w-4" />
+                        Dodaj sprzęt
+                    </Link>
+                )}
             </div>
 
             <EquipmentFilters

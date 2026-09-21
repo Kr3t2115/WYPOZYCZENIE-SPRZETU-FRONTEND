@@ -6,7 +6,7 @@ export type ReservationStatus = (typeof RESERVATION_STATUSES)[number]
 
 const statusField = z.enum(RESERVATION_STATUSES)
 const notesField = z.string().min(1).max(1000).optional()
-const rejectionReasonField = z.string().min(1).max(1000).optional()
+const rejectReasonField = z.string().min(1).max(1000).optional()
 
 const createSchema = z.object({
     equipmentId: uuidField,
@@ -24,7 +24,7 @@ const updateSchema = z.object({
     notes: notesField,
 
     // przez sekretariat
-    rejectionReason: rejectionReasonField,
+    rejectReason: rejectReasonField,
     reviewedBy: uuidField.optional(),
 })
 
@@ -55,7 +55,7 @@ export type UpdateReservation = {
     notes?: string
 
     // przez sekretariat
-    rejectionReason?: string
+    rejectReason?: string
     reviewedBy?: string
 }
 

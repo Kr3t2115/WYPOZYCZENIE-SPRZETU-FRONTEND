@@ -55,50 +55,7 @@ export function LoginForm() {
                 <Button type="submit" className="w-full" disabled={isLoading}>
                     {isLoading ? "Logowanie..." : "Zaloguj się"}
                 </Button>
-                <Button disabled variant="outline" className="w-full" type="button">
-                    Zaloguj za pomocą konta Microsoft
-                </Button>
             </div>
-
-
-            <Button className={"m-2"} onClick={() => {
-                setUser({
-                    email: "test@test.pl",
-                    role: "STUDENT",
-                    firstName: "Studentka",
-                    lastName: "Koźmiński",
-                })
-                router.push("/dashboard");
-                router.refresh();
-            }}>
-                Boczna furtka machen - STUDENT
-            </Button>
-
-            <Button className={"m-2"} onClick={() => {
-                setUser({
-                    email: "test@test.pl",
-                    role: "SECRETARIAT",
-                    firstName: "Simon",
-                    lastName: "Amman",
-                })
-                router.push("/dashboard");
-                router.refresh();
-            }}>
-                Boczna furtka machen - SECRETARIAT
-            </Button>
-
-            <Button className={"m-2"} onClick={() => {
-                setUser({
-                    email: "test@test.pl",
-                    role: "IT_STAFF",
-                    firstName: "BBBBBBB",
-                    lastName: "BBBBBBBBBBB",
-                })
-                router.push("/dashboard");
-                router.refresh();
-            }}>
-                Boczna furtka machen - IT_STAFF
-            </Button>
         </form>
     );
 }
