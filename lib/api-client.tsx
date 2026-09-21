@@ -22,14 +22,17 @@ async function apiClient<ResponseType = unknown, BodyType = unknown>(
 ): Promise<ResponseType> {
     const { method, body, headers } = options;
 
+    // FormData (upload zdjęć) - Content-Type z boundary ustawia przeglądarka
+    const isFormData = body instanceof FormData;
+
     const response = await fetch(process.env.NEXT_PUBLIC_API_URL + endpoint, {
         method,
         credentials: "include",
         headers: {
-            "Content-Type": "application/json",
+            ...(isFormData ? {} : { "Content-Type": "application/json" }),
             ...headers,
         },
-        body: body !== undefined ? JSON.stringify(body) : undefined,
+        body: isFormData ? body : body !== undefined ? JSON.stringify(body) : undefined,
     });
 
     let data: unknown = null;

@@ -30,13 +30,13 @@ export type UpdateUser = {
     lastName?: string,
 }
 
+// pola z `select` w users.repository (list / getById)
 export type User = {
     id: string;
-    isActive: boolean,
-    role: ROLE_TYPE
-    firstName: string,
-    lastName: string,
     email: string,
+    role: ROLE_TYPE
+    isActive: boolean,
+    lastLogin: string | null,
 }
 
 

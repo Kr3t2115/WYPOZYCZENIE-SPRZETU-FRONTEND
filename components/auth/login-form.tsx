@@ -77,27 +77,27 @@ export function LoginForm() {
             <Button className={"m-2"} onClick={() => {
                 setUser({
                     email: "test@test.pl",
-                    role: "SECRETARY",
+                    role: "SECRETARIAT",
                     firstName: "Simon",
                     lastName: "Amman",
                 })
                 router.push("/dashboard");
                 router.refresh();
             }}>
-                Boczna furtka machen - SECRETARY
+                Boczna furtka machen - SECRETARIAT
             </Button>
 
             <Button className={"m-2"} onClick={() => {
                 setUser({
                     email: "test@test.pl",
-                    role: "IT_STUFF",
+                    role: "IT_STAFF",
                     firstName: "BBBBBBB",
                     lastName: "BBBBBBBBBBB",
                 })
                 router.push("/dashboard");
                 router.refresh();
             }}>
-                Boczna furtka machen - IT_STUFF
+                Boczna furtka machen - IT_STAFF
             </Button>
         </form>
     );

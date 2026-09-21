@@ -1,27 +1,21 @@
-import {Category, CategoryListResponse, CreateCategory, UpdateCategory} from "@/lib/validations/category";
 import {apiClient} from "@/lib/api-client";
+import {User, UserListResponse, UpdateUser} from "@/lib/validations/users";
 
-export async function getCategories(query: string): Promise<CategoryListResponse> {
-    return apiClient<CategoryListResponse, unknown>("/equipment/categories" + query ? "/" + query : "", {
+export async function getUsers(query: string): Promise<UserListResponse> {
+    return apiClient<UserListResponse, unknown>("/users" + (query ? "?" + query : ""), {
         method: "GET",
     });
 }
 
-export async function getById(id: string): Promise<Category> {
-    return apiClient<Category, unknown>("/equipment/categories/" + id, {
+export async function getById(id: string): Promise<User> {
+    return apiClient<User, unknown>("/users/" + id, {
         method: "GET",
     });
 }
 
-export async function update(id: string, data: UpdateCategory): Promise<Category> {
-    return apiClient<Category, UpdateCategory>("/equipment/categories/" + id, {
+export async function update(id: string, data: UpdateUser): Promise<User> {
+    return apiClient<User, UpdateUser>("/users/" + id, {
         method: "PATCH",
         body: data,
-    });
-}
-
-export async function insert(data: CreateCategory): Promise<Category> {
-    return apiClient<Category, CreateCategory>("/equipment/categories", {
-        method: "GET",
     });
 }

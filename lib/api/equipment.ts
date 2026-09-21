@@ -1,27 +1,28 @@
 import {apiClient} from "@/lib/api-client";
-import {CategoryListResponse, Category, UpdateCategory, CreateCategory} from "@/lib/validations/category";
+import {Equipment, EquipmentDetails, EquipmentListResponse, UpdateEquipment, CreateEquipment} from "@/lib/validations/equipment";
 
-export async function getEquipments(query: string): Promise<CategoryListResponse> {
-    return apiClient<CategoryListResponse, unknown>("/equipment" + query ? "/" + query : "", {
+export async function getEquipments(query: string): Promise<EquipmentListResponse> {
+    return apiClient<EquipmentListResponse, unknown>("/equipment" + (query ? "?" + query : ""), {
         method: "GET",
     });
 }
 
-export async function getById(id: string): Promise<Category> {
-    return apiClient<Category, unknown>("/equipment/" + id, {
+export async function getById(id: string): Promise<EquipmentDetails> {
+    return apiClient<EquipmentDetails, unknown>("/equipment/" + id, {
         method: "GET",
     });
 }
 
-export async function update(id: string, data: UpdateCategory): Promise<Category> {
-    return apiClient<Category, UpdateCategory>("/equipment/" + id, {
+export async function update(id: string, data: UpdateEquipment): Promise<Equipment> {
+    return apiClient<Equipment, UpdateEquipment>("/equipment/" + id, {
         method: "PATCH",
         body: data,
     });
 }
 
-export async function insert(data: CreateCategory): Promise<Category> {
-    return apiClient<Category, CreateCategory>("/equipment", {
-        method: "GET",
+export async function insert(data: CreateEquipment): Promise<Equipment> {
+    return apiClient<Equipment, CreateEquipment>("/equipment", {
+        method: "POST",
+        body: data,
     });
 }

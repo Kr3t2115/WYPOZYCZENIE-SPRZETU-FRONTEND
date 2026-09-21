@@ -25,6 +25,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {useIsMobile} from "@/hooks/use-mobile";
+import {useLogout} from "@/hooks/use-logout";
 
 
 export function AppSidebar() {
@@ -32,6 +33,7 @@ export function AppSidebar() {
     const menuGroups = getMenuItemsByRole(user?.role);
 
     const isMobile = useIsMobile()
+    const {logout, isLoggingOut} = useLogout()
 
     return (
         <Sidebar collapsible="icon">
@@ -114,31 +116,9 @@ export function AppSidebar() {
                                     </DropdownMenuLabel>
                                     <DropdownMenuSeparator />
                                 </DropdownMenuGroup>
-                                <DropdownMenuGroup>
-                                    <DropdownMenuItem>
-                                        <Sparkles />
-                                        Upgrade to Pro
-                                    </DropdownMenuItem>
-                                </DropdownMenuGroup>
-                                <DropdownMenuSeparator />
-                                <DropdownMenuGroup>
-                                    <DropdownMenuItem>
-                                        <BadgeCheck />
-                                        Account
-                                    </DropdownMenuItem>
-                                    <DropdownMenuItem>
-                                        <CreditCard />
-                                        Billing
-                                    </DropdownMenuItem>
-                                    <DropdownMenuItem>
-                                        <Bell />
-                                        Notifications
-                                    </DropdownMenuItem>
-                                </DropdownMenuGroup>
-                                <DropdownMenuSeparator />
-                                <DropdownMenuItem>
+                                <DropdownMenuItem onClick={logout} disabled={isLoggingOut}>
                                     <LogOut />
-                                    Log out
+                                    {isLoggingOut ? "Wylogowywanie..." : "Wyloguj się"}
                                 </DropdownMenuItem>
                             </DropdownMenuContent>
                         </DropdownMenu>

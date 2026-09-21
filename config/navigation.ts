@@ -14,7 +14,7 @@ import {
     CalendarIcon,
     LucideIcon
 } from "lucide-react";
-import { ROLES } from "@/store/auth-store";
+import { ROLE_TYPE } from "@/store/auth-store";
 
 export interface MenuItem {
     title: string;
@@ -31,7 +31,7 @@ const STUDENT_MENU: MenuGroup[] = [
     {
         items: [
             { title: 'Pulpit', href: '/dashboard', icon: LayoutDashboard },
-            { title: 'Lista sprzętów', href: '/equipments', icon: PackageSearch },
+            { title: 'Lista sprzętów', href: '/equipment', icon: PackageSearch },
             { title: 'Rezerwacje', href: '/my-reservation', icon: Clock },
             { title: 'Wypożyczenia', href: '/my-rentals', icon: CalendarIcon,},
             { title: 'Przedłużenia', href: '/my-rentals/extensions', icon: CalendarIcon,},
@@ -73,13 +73,13 @@ const IT_MENU: MenuGroup[] = [
     },
 ];
 
-const getMenuItemsByRole = (role?: ROLES): MenuGroup[] => {
+const getMenuItemsByRole = (role?: ROLE_TYPE): MenuGroup[] => {
     switch (role) {
         case "STUDENT":
             return STUDENT_MENU;
-        case "SECRETARY":
+        case "SECRETARIAT":
             return SECRETARIAT_MENU;
-        case "IT_STUFF":
+        case "IT_STAFF":
             return IT_MENU;
         default:
             return [];

@@ -7,8 +7,8 @@ export default function Dashboard() {
     const user = useAuth((state) => state.user);
 
     switch (user?.role) {
-        case "SECRETARY":
-        case "IT_STUFF":
+        case "SECRETARIAT":
+        case "IT_STAFF":
             return <StudentDashboard/>
         default:
             return <StudentDashboard/>
